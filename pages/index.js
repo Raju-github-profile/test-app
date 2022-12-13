@@ -3,7 +3,6 @@ const alanKey = 'c411c68b1472d0c9b61616ccb9a09ec72e956eca572e1d8b807a3e2338fdd0d
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Provider, useSelector } from "react-redux";
-import MessengerCustomerChat from 'react-messenger-customer-chat';
 const pageID = '108679325425567'
 const appID = '501714114397260'
 export default function Home() {
@@ -35,10 +34,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>welcome</h1>
-      <MessengerCustomerChat
-        pageId={pageID}
-        appId={appID}
-      />
+
     </div>
   )
 }
