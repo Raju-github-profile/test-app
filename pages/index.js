@@ -38,7 +38,7 @@ export default function Home() {
     pageId={pageID}
     language="en_US"
     themeColor={"#000000"}
-    bottomSpacing={300}
+    bottomSpacing={30}
     loggedInGreeting="loggedInGreeting"
     loggedOutGreeting="Please login to continue !"
     greetingDialogDisplay={"fade"}
