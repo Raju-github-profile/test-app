@@ -2,24 +2,25 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     value: 0,
-    name:'forgot my name'
+    name: 'forgot my name',
+    socket: null,
+    message: null
 }
 export const adminSlice = createSlice({
     name: 'adminSlice',
     initialState,
     reducers: {
-        increment: (state) => {
-            state.value += 1
+        addSocket: (state, action) => {
+            console.log('call');
+
+            state.socket = action.payload.socket
         },
-        decrement: (state) => {
-            state.value -= 1
-        },
-        incrementByAmount: (state, action) => {
-            state.value += action.payload
+        addMessage: (state, action) => {
+            state.message = action.payload.message
         },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = adminSlice.actions
+export const { addSocket,addMessage } = adminSlice.actions
 export default adminSlice.reducer
