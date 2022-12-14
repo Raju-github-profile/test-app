@@ -55,7 +55,7 @@ const Layout = ({ children }) => {
             < MessengerChat
                 pageId={pageID}
                 language="en_US"
-                themeColor={"#00FFFF"}
+                themeColor={"#0000FF"}
                 bottomSpacing={30}
                 loggedInGreeting="Welcome to our Journey!!"
                 loggedOutGreeting="Please login to continue !"
