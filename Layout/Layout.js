@@ -1,10 +1,11 @@
 // import { Navbar, Sidebar } from "../components"
-// import { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
+import localStorage from 'localStorage';
 const pageID = '108679325425567'
 import { MessengerChat } from "react-messenger-chat-plugin";
 import { io } from 'socket.io-client'
 import { useDispatch } from 'react-redux';
-import { addMessage, addSocket } from '../redux/slices/slice';
+import { addMessage, addSocket, addAlanInstance } from '../redux/slices/slice';
 import { useEffect } from "react";
 import { useRouter } from 'next/router'
 const endPoint = 'http://localhost:8000'
@@ -13,6 +14,12 @@ const alanKey = 'c411c68b1472d0c9b61616ccb9a09ec72e956eca572e1d8b807a3e2338fdd0d
 const Layout = ({ children }) => {
     const dispatch = useDispatch()
     const router = useRouter()
+    useEffect(() => {
+        localStorage.getItem()
+    }, [])
+    // useEffect(() => {
+    // const storedData=JSON.parse(localStorage.getItem("storedData"));
+    //  }, [])
     useEffect(() => {
         const alanBtn = require('@alan-ai/alan-sdk-web');
         alanBtn({
@@ -30,6 +37,8 @@ const Layout = ({ children }) => {
                 }
             }
         });
+
+
     }, []);
     useEffect(() => {
         var socket = io(endPoint)
@@ -81,8 +90,8 @@ const Layout = ({ children }) => {
                     console.log("onMessengerLoad");
                 }}
             />
-            {/* <Toaster />
-            {showBars && (
+            <Toaster />
+            {/* {showBars && (
                 <Sidebar />
             )}
             <div >
