@@ -1,17 +1,41 @@
 import Head from 'next/head'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Provider, useSelector } from "react-redux";
 import { io } from 'socket.io-client'
 import { useDispatch } from 'react-redux';
 import { addSocket } from '../redux/slices/slice';
+// import alanBtn from "@alan-ai/alan-sdk-web"
 import { motion } from 'framer-motion'
-
 export default function Home() {
-  const router = useRouter()
+  const [alanBtnInstance, setAlanBtnInstance] = useState(null)
+  const [isGreeted, setIsGreeted] = useState(false)
+  const router = useRouter();
   const state = useSelector((state) => state.adminState)
-  console.log({ state });
-  const dispatch = useDispatch()
+  useEffect(() => {
+    const alanBtn = require('@alan-ai/alan-sdk-web');
+    if (alanBtnInstance != null) return;
+    setAlanBtnInstance(
+      alanBtn({
+        top: "15px",
+        left: "15px",
+        key: 'c411c68b1472d0c9b61616ccb9a09ec72e956eca572e1d8b807a3e2338fdd0dc/stage',
+        onCommand: ({ command, payload }) => {
+          if (command == 'audiodemo') {
+            console.log({command})
+            router.push('/audiodemo');
+          }
+
+        }
+      })
+    )
+  }, [])
+  useEffect(() => {
+    if (!isGreeted) {
+      alanBtnInstance?.activate();
+      alanBtnInstance?.playText(`Welcome to talkspace.I am your assistant.please interact with me. thank you`);
+    }
+  }, [alanBtnInstance])
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -29,7 +53,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>welcome</h1>
-
     </motion.div>
   )
 }

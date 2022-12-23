@@ -13,6 +13,8 @@ export const adminSlice = createSlice({
     name: 'adminSlice',
     initialState,
     reducers: {
+        // addToken:(state,actio)
+
         addSocket: (state, action) => {
             console.log('call');
             state.socket = action.payload.socket
@@ -37,12 +39,12 @@ export const adminSlice = createSlice({
             state.user = action.payload.bool
             console.log('first')
             state.user = action.payload.bool
-            
+
             var token = `Bearer ${tokenValue}`;
             localStorage.setItem('myKey', JSON.stringify(token));
             // const myValue = localStorage.getItem('myKey');
             // const value = JSON.parse(myValue)
-            
+
         },
 
     }

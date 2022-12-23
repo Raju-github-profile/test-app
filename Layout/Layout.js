@@ -12,14 +12,17 @@ const endPoint = 'http://localhost:8000'
 const appID = '501714114397260'
 const alanKey = 'c411c68b1472d0c9b61616ccb9a09ec72e956eca572e1d8b807a3e2338fdd0dc/stage'
 const Layout = ({ children }) => {
-    const dispatch = useDispatch()
-    const router = useRouter()
-    useEffect(() => {
-        localStorage.getItem()
-    }, [])
+    const dispatch = useDispatch();
+    const router = useRouter();
     // useEffect(() => {
-    // const storedData=JSON.parse(localStorage.getItem("storedData"));
-    //  }, [])
+    //     const getItem = async () => {
+    //         const myValue = await localStorage.getItem('myKey');
+    //         const value = JSON.parse(myValue)
+    //         console.log({ value })
+    //         dispatch()
+    //     }
+    //     getItem()
+    // }, [])
     useEffect(() => {
         const alanBtn = require('@alan-ai/alan-sdk-web');
         alanBtn({
